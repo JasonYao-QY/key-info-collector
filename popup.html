@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Info Collector</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1 class="brand">Key Info</h1>
+      <button id="rerun" class="ghost-btn" type="button" title="Run again" hidden>
+        ↻ Again
+      </button>
+    </header>
+
+    <main id="content">
+      <!-- States are swapped in by popup.js -->
+      <section id="loading" class="state">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="muted">Reading this page…</p>
+      </section>
+
+      <section id="error" class="state" hidden>
+        <p class="error-title">Hmm, that didn't work.</p>
+        <p id="error-message" class="muted"></p>
+        <div class="error-actions">
+          <button id="retry" class="primary-btn" type="button">Try again</button>
+          <button id="open-options" class="link-btn" type="button">
+            Open settings
+          </button>
+        </div>
+      </section>
+
+      <section id="result" class="state" hidden>
+        <span id="category-pill" class="pill"></span>
+        <h2 id="result-title" class="title"></h2>
+
+        <p id="tldr" class="tldr"></p>
+
+        <ul id="key-points" class="key-points"></ul>
+
+        <!-- Fields card — rendered only when non-empty -->
+        <div id="fields-card" class="card" hidden>
+          <dl id="fields" class="fields"></dl>
+        </div>
+
+        <!-- Actions checklist — rendered only when present -->
+        <div id="actions-wrap" hidden>
+          <h3 class="section-label">Suggested next steps</h3>
+          <ul id="actions" class="actions"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <button id="footer-options" class="link-btn" type="button">Settings</button>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
